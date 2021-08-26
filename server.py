@@ -27,7 +27,8 @@ async def handle_client(reader, writer, walk='optimal_strategy', side='ALICE', p
     PK_B_received = await reader.read()  # bytes
     PK_B_string = PK_B_received.decode()  # string
     PK_B = decode_public_key(PK_B_received)  # [EC, [P,Q]]
-    print(f"CLIENT -> SERVER: {PK_B_string}")
+    # print(f"CLIENT -> SERVER: {PK_B_string}")  # uncomment for exact payload
+    print(f"CLIENT -> SERVER: Payload received!")
 
     params_name = loads(PK_B_string)['protocol']['params']
     params = choose_params(params_name)
@@ -50,7 +51,8 @@ async def handle_client(reader, writer, walk='optimal_strategy', side='ALICE', p
         PK_A = exec_strategy(params.EC, params.l_A, S_A, [params.P_B, params.Q_B], strategy, stage=1, x=params.Fp2_gen)
     # PK_A = [EC', [P_B', Q_B']]
     PK_A_encoded = encode_public_key(*PK_A, params_name, side)
-    print(f"SERVER -> CLIENT: {PK_A_encoded}")
+    # print(f"SERVER -> CLIENT: {PK_A_encoded}")  # uncomment for exact payload
+    print(f"SERVER -> CLIENT: Payload sent!")
     writer.write(PK_A_encoded.encode())
     writer.write_eof()
     await writer.drain()

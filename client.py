@@ -45,7 +45,8 @@ async def sidh(params_name='SIKEp434', walk='optimal_strategy', side='BOB', prin
     # PK_B = [EC', [P_A', Q_A']]
     PK_B_encoded = encode_public_key(*PK_B, params_name, side)
 
-    print(f'CLIENT -> SERVER: {PK_B_encoded}')
+    # print(f'CLIENT -> SERVER: {PK_B_encoded}')  # uncomment for exact payload
+    print(f'CLIENT -> SERVER: Payload sent!')
     writer.write(PK_B_encoded.encode())
     writer.write_eof()
     await writer.drain()
@@ -53,7 +54,8 @@ async def sidh(params_name='SIKEp434', walk='optimal_strategy', side='BOB', prin
     PK_A_received = await reader.read()  # bytes
     PK_A_string = PK_A_received.decode()  # string
     PK_A = decode_public_key(PK_A_received)  # [EC, [P,Q]]
-    print(f'SERVER -> CLIENT: {PK_A_string}')
+    # print(f'SERVER -> CLIENT: {PK_A_string}')  # uncomment for exact payload
+    print(f'SERVER -> CLIENT: Payload received!')
 
     EC_from_PK_A = PK_A[0]
     k_BxQ_B = pari.ellmul(EC_from_PK_A, PK_A[1][1], k_B)
