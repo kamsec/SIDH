@@ -9,6 +9,9 @@ from json import loads
 from src.sidh import choose_params, pari, isogeny_walk, generate_strategy, validate_strategy, exec_strategy,\
     encode_public_key, decode_public_key
 
+IP = '0.0.0.0'
+PORT = 1234
+
 
 base_2_strat_SIDHp434 = [111, 58, 27, 12, 5, 2, 1, 1, 3, 1, 2, 1, 7, 3, 1, 2, 1, 4, 2, 1, 2, 1, 1, 15, 7, 3, 1, 2, 1, 4,
                          2, 1, 2, 1, 1, 8, 4, 2, 1, 2, 1, 1, 4, 2, 1, 1, 2, 1, 1, 31, 15, 7, 3, 1, 2, 1, 4, 2, 1, 2, 1,
@@ -69,7 +72,7 @@ async def handle_client(reader, writer, walk='optimal_strategy', side='ALICE', p
     print(f'Time elapsed: {time1 - time0}')
 
 async def main():
-    server = await asyncio.start_server(handle_client, '192.168.0.107', 1234)
+    server = await asyncio.start_server(handle_client, IP, PORT)
     addr = server.sockets[0].getsockname()
     print(f'Serving on {addr}')
 

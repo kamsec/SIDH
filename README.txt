@@ -59,8 +59,6 @@ Possible values are listed as comments next to dictionary items initialization, 
         'walk': 'isogeny_walk',  # 'isogeny_walk', 'optimal_strategy'
 
 
-
-
 client.py has function with the following possible arguments:
 
         params_name='SIKEp434'  # 'small', 'medium' 'SIKEp434'
@@ -68,10 +66,9 @@ client.py has function with the following possible arguments:
         side='BOB',  # 'BOB' --- implemented only for BOB side because of 3-degree isogenies efficiency
         print_all=False  # True, False
 
-Ip adress and port to which client will try to connect, can be changed in function call:
-reader, writer = await asyncio.open_connection('192.168.0.107', 1234)
-
-
+Ip adress and port to which client will try to connect, can be set as contants:
+IP = '192.168.0.101'
+PORT = 1234
 
 
 server.py has function with the following possible arguments:
@@ -82,25 +79,11 @@ server.py has function with the following possible arguments:
 
 server cannot choose params_name because the choice of the parameters set is decided by the client.
 
-Port which server uses, can be set in function call:
-server = await asyncio.start_server(handle_client, '192.168.0.107', 1234)
+Port which server uses, can be set as a constant:
+PORT = 1234
 
 
 sidh_isogeny_benchmark.py in main function have variables:
 	max_range_1 = 11  # :int: --- range of checked q_cost values, in choosing optimal strategy for isogeny computation
 	max_range_2 = 3   # :int: --- amount of sidh executions with chosen strategy
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-

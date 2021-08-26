@@ -8,6 +8,8 @@ import time
 from src.sidh import choose_params, pari, isogeny_walk, generate_strategy, validate_strategy, exec_strategy, \
     encode_public_key, decode_public_key
 
+IP = '192.168.0.101'
+PORT = 1234
 
 base_3_strat_SIDHp434 = [71, 34, 17, 8, 4, 2, 1, 1, 2, 1, 1, 4, 2, 1, 1, 2, 1, 1, 9, 4, 2, 1, 1, 2, 1, 1, 5, 2, 1, 1, 3,
                          1, 2, 1, 17, 9, 4, 2, 1, 1, 2, 1, 1, 5, 2, 1, 1, 3, 1, 2, 1, 9, 4, 2, 1, 1, 2, 1, 1, 5, 2, 1,
@@ -20,8 +22,7 @@ base_3_strat_SIDHp434 = [71, 34, 17, 8, 4, 2, 1, 1, 2, 1, 1, 4, 2, 1, 1, 2, 1, 1
 async def sidh(params_name='SIKEp434', walk='optimal_strategy', side='BOB', print_all=False):
     time0 = time.perf_counter()
 
-    reader, writer = await asyncio.open_connection(
-        '192.168.0.107', 1234)
+    reader, writer = await asyncio.open_connection(IP, PORT)
 
     params = choose_params(params_name)
 
