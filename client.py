@@ -21,7 +21,7 @@ async def sidh(params_name='SIKEp434', walk='optimal_strategy', side='BOB', prin
     time0 = time.perf_counter()
 
     reader, writer = await asyncio.open_connection(
-        '192.168.0.101', 1234)
+        '192.168.0.107', 1234)
 
     params = choose_params(params_name)
 

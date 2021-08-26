@@ -69,7 +69,7 @@ async def handle_client(reader, writer, walk='optimal_strategy', side='ALICE', p
     print(f'Time elapsed: {time1 - time0}')
 
 async def main():
-    server = await asyncio.start_server(handle_client, '192.168.0.101', 1234)
+    server = await asyncio.start_server(handle_client, '192.168.0.107', 1234)
     addr = server.sockets[0].getsockname()
     print(f'Serving on {addr}')
 

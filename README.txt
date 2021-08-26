@@ -1,8 +1,6 @@
-This folder contains the second and main implementation of SIDH protocol using Cypari python library.
+This folder contains the second and main implementation of the SIDH protocol using Cypari python library.
 It was implemented on Windows 7 Ultimate 64bit OS, but it was designed to work also on low resource device, Raspberry Pi Zero W on Raspbian OS.
-It was implemented using Python 3.8
-
-
+Tested with Python 3.7 and 3.8
 
 ----------------------------------------------------------
 --------------------- DESCRIPTION ------------------------
@@ -18,13 +16,11 @@ Because computations of degree-3 isogenies are faster, client (Raspberry Pi) alw
 sidh_isogeny_benchmark.py was used to generate optimal strategy for isogeny computation on Raspberry Pi and laptop, which were hardcoded later.
 isogeny_times_benchmark.xlsx contains data gathered with it.
 
-
-
 ----------------------------------------------------------
---------------------- INSTALLATION -----------------------
+------------------------- USAGE --------------------------
 ----------------------------------------------------------
 
-In order to use it, Cypari library has to be installed.
+In order to use it, Python 3.7+ has to be installed.
 
 a) On Windows:
 
@@ -38,7 +34,6 @@ python server.py
 
 
 
-
 b) On Raspberry Pi (Raspbian):
 
 1. Install python3-cypari2 (https://debian.pkgs.org/11/debian-main-arm64/python3-cypari2_2.1.2-2_arm64.deb.html)
@@ -46,7 +41,6 @@ sudo apt-get install python3-cypari2
 
 2. It should be possible to run all scripts with python3, eg.
 python3 client.py
-
 
 
 ----------------------------------------------------------
@@ -75,7 +69,7 @@ client.py has function with the following possible arguments:
         print_all=False  # True, False
 
 Ip adress and port to which client will try to connect, can be changed in function call:
-reader, writer = await asyncio.open_connection('192.168.0.101', 1234)
+reader, writer = await asyncio.open_connection('192.168.0.107', 1234)
 
 
 
@@ -89,7 +83,7 @@ server.py has function with the following possible arguments:
 server cannot choose params_name because the choice of the parameters set is decided by the client.
 
 Port which server uses, can be set in function call:
-server = await asyncio.start_server(handle_client, '192.168.0.101', 1234)
+server = await asyncio.start_server(handle_client, '192.168.0.107', 1234)
 
 
 sidh_isogeny_benchmark.py in main function have variables:
