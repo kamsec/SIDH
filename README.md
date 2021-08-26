@@ -19,7 +19,10 @@ Because computations of degree-3 isogenies are faster, client (Raspberry Pi) alw
 - `sidh_isogeny_benchmark.py` was used to generate optimal strategy for isogeny computation on Raspberry Pi and PC, which were hardcoded later.
 
 ## Usage
-
+To download the repository, enter:
+```
+git clone https://github.com/kamsec/SIDH.git
+```
 In order to use it, Python 3.7+ has to be installed.
 
 a) On Windows:
