@@ -1,4 +1,4 @@
-This archive contains implementation of the SIDH protocol using Cypari python library.
+This archive contains implementation of the Supersingular Isogeny Diffie-Hellman protocol using Cypari python library.
 It was implemented on Windows 7 Ultimate 64bit OS, but it was designed to work also on low resource device, Raspberry Pi Zero W with Raspbian OS.
 Tested with Python 3.7 and 3.8.
 
