@@ -2,22 +2,21 @@ This archive contains implementation of the SIDH protocol using Cypari python li
 It was implemented on Windows 7 Ultimate 64bit OS, but it was designed to work also on low resource device, Raspberry Pi Zero W with Raspbian OS.
 Tested with Python 3.7 and 3.8.
 
-![](image.png)
+![Image](image.png)
 
 ## Description
 - Information about SIDH protocol:
 https://en.wikipedia.org/wiki/Supersingular_isogeny_key_exchange
 https://eprint.iacr.org/2019/1321.pdf
 
-- Core functions can be found implemented in src/sidh.py
+- Core functions can be found implemented in `src/sidh.py`
 
-- sidh_protocol.py is an example of protocol execution on single machine, simulating both parties, Alice and Bob.
+- `sidh_protocol.py` is an example of protocol execution on single machine, simulating both parties, Alice and Bob.
 
-- server.py and client.py are the example implementation of SIDH key exchange between server (running on PC) and a client (running on Raspberry Pi). When server script is executed, it listens for connection on port 1234. When client script is executed, it opens connection to the server, computes public key and send it in JSON form, along with protocol name and chosen parameters set. Server receives the key and computes his own public key, sends it to client, and both parties compute their secret keys. After it is done, secret keys are printed and the connection is closed.
+- `server.py` and `client.py` are the example implementation of SIDH key exchange between server (running on PC) and a client (running on Raspberry Pi). When server script is executed, it listens for connection on port 1234. When client script is executed, it opens connection to the server, computes public key and send it in JSON form, along with protocol name and chosen parameters set. Server receives the key and computes his own public key, sends it to client, and both parties compute their secret keys. After it is done, secret keys are printed and the connection is closed.
 Because computations of degree-3 isogenies are faster, client (Raspberry Pi) always plays the role of Bob (3-isogenies), and server (PC) always play the role of Alice (2-isogenies).
 
-- sidh_isogeny_benchmark.py was used to generate optimal strategy for isogeny computation on Raspberry Pi and PC, which were hardcoded later.
-isogeny_times_benchmark.xlsx contains data gathered with it.
+- `sidh_isogeny_benchmark.py` was used to generate optimal strategy for isogeny computation on Raspberry Pi and PC, which were hardcoded later.
 
 ## Usage
 
@@ -53,7 +52,7 @@ b) On Raspberry Pi (Raspbian):
 You might need to add firewall exceptions if using it between two devices.
 ## Configuration
 
-- sidh_protocol.py has function of the same name which takes as arguments values from config dictionary.
+- `sidh_protocol.py` has function of the same name which takes as arguments values from config dictionary.
 Possible values are listed as comments next to dictionary items initialization, and they are:
 
         'params_name': "SIKEp434",  # 'small', 'medium' 'SIKEp434'
@@ -65,7 +64,7 @@ Possible values are listed as comments next to dictionary items initialization, 
         'walk': 'isogeny_walk',  # 'isogeny_walk', 'optimal_strategy'
 
 
-- client.py has function with the following possible arguments:
+- `client.py` has function with the following possible arguments:
 
         params_name='SIKEp434'  # 'small', 'medium' 'SIKEp434'
         walk='optimal_strategy'  # 'isogeny_walk', 'optimal_strategy'
@@ -77,20 +76,19 @@ Possible values are listed as comments next to dictionary items initialization, 
         IP = '192.168.0.101'
         PORT = 1234
 
-- server.py has function with the following possible arguments:
+- `server.py` has function with the following possible arguments:
 
         walk='optimal_strategy'  # 'isogeny_walk', 'optimal_strategy'
         side='ALICE',  # 'ALICE' --- implemented only for ALICE side because of 2-isogenies are more time-consuming
         print_all=False  # True, False
 
-- server cannot choose params_name because the choice of the parameters set is decided by the client.
+- Server cannot choose `params_name` because the choice of the parameters set is decided by the client.
 
 - Port which server uses, can be set as a constant:
 
         PORT = 1234
 
-
-- sidh_isogeny_benchmark.py in main function have variables:
+- `sidh_isogeny_benchmark.py` in main function has the variables:
         
         max_range_1 = 11  # :int: --- range of checked q_cost values, in choosing optimal strategy for isogeny computation
         max_range_2 = 3   # :int: --- amount of sidh executions with chosen strategy
