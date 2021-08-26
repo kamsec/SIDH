@@ -5,9 +5,9 @@ Tested with Python 3.7 and 3.8.
 ![Image](image.PNG)
 
 ## Description
-- Information about SIDH protocol:
-https://en.wikipedia.org/wiki/Supersingular_isogeny_key_exchange
-https://eprint.iacr.org/2019/1321.pdf
+- Information about the SIDH protocol:\
+[*SIDH key exchange*](https://en.wikipedia.org/wiki/Supersingular_isogeny_key_exchange) *on Wikipedia*\
+[*Presentation*](https://ecc2017.cs.ru.nl/slides/ecc2017school-costello.pdf) *and* [*paper*](https://eprint.iacr.org/2019/1321.pdf) *by Craig Costello from Microsoft Research*
 
 - Core functions can be found implemented in `src/sidh.py`
 
