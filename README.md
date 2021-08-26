@@ -56,11 +56,11 @@ You might need to add firewall exceptions if using it between two devices.
 Possible values are listed as comments next to dictionary items initialization, and they are:
 
         'params_name': "SIKEp434",  # 'small', 'medium' 'SIKEp434'
-        'print_all': False,  # True, False --- for visualiation when using 'small' params)
-        'k_A': None,  # :int: --- Alice chooses a secret (inside the function)
-        'k_B': None,  # :int: --- Bob chooses a secret (inside the function)
-        'p_cost': 100,  # :int: --- multiplication cost for optimal_strategy uses precomputed value
-        'q_cost': 120,  # :int: --- isogeny cost for optimal_strategy (uses precomputed value)
+        'print_all': False,  # True, False - for visualiation when using 'small' params
+        'k_A': None,  # :int: - Alice can choose a secret for testing (currently inside the function)
+        'k_B': None,  # :int: - Bob can choose a secret for testing (currently inside the function)
+        'p_cost': 100,  # :int: - multiplication cost for optimal_strategy uses precomputed value
+        'q_cost': 120,  # :int: - isogeny cost for optimal_strategy (uses precomputed value)
         'walk': 'isogeny_walk',  # 'isogeny_walk', 'optimal_strategy'
 
 
@@ -68,7 +68,7 @@ Possible values are listed as comments next to dictionary items initialization, 
 
         params_name='SIKEp434'  # 'small', 'medium' 'SIKEp434'
         walk='optimal_strategy'  # 'isogeny_walk', 'optimal_strategy'
-        side='BOB',  # 'BOB' --- implemented only for BOB side because of 3-degree isogenies efficiency
+        side='BOB',  # 'BOB' - implemented only for BOB side because of 3-degree isogenies efficiency
         print_all=False  # True, False
 
 - Ip adress and port to which client will try to connect, can be set as contants:
@@ -79,7 +79,7 @@ Possible values are listed as comments next to dictionary items initialization, 
 - `server.py` has function with the following possible arguments:
 
         walk='optimal_strategy'  # 'isogeny_walk', 'optimal_strategy'
-        side='ALICE',  # 'ALICE' --- implemented only for ALICE side because of 2-isogenies are more time-consuming
+        side='ALICE',  # 'ALICE' - implemented only for ALICE side because of 2-isogenies are more time-consuming
         print_all=False  # True, False
 
 - Server cannot choose `params_name` because the choice of the parameters set is decided by the client.
@@ -90,6 +90,6 @@ Possible values are listed as comments next to dictionary items initialization, 
 
 - `sidh_isogeny_benchmark.py` in main function has the variables:
         
-        max_range_1 = 11  # :int: --- range of checked q_cost values, in choosing optimal strategy for isogeny computation
-        max_range_2 = 3   # :int: --- amount of sidh executions with chosen strategy
+        max_range_1 = 11  # :int: - range of checked q_cost values, in choosing optimal strategy for isogeny computation
+        max_range_2 = 3   # :int: - amount of sidh executions with chosen strategy
 
